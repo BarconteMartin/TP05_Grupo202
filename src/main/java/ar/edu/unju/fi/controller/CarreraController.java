@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.model.Carrera;
+import ar.edu.unju.fi.service.CarreraService;
 
 @Controller
 public class CarreraController {
 	
 	@Autowired
 	Carrera nuevaCarrera; // = new Carrera()
+	
+	@Autowired
+	CarreraService carreraService;
 	
 	@GetMapping("/formularioCarreras")
 	public ModelAndView getFormularioCarreras() {
@@ -27,9 +31,13 @@ public class CarreraController {
 	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") Carrera carreraAGuardar) {
 		//guardar
 		//ListadoCarreras.agregarCarrera(carreraAGuardar);
+		carreraService.guardarCarrera(carreraAGuardar);
+		
 		//mostrar el listado
 		ModelAndView modelView = new ModelAndView("listaDeCarreras");
-		//modelView.addObject("listadoCarrera", ListadoCarreras.listarCarreras());	
+		//modelView.addObject("listadoCarrera", ListadoCarreras.listarCarreras());
+		modelView.addObject("listadoCarrera", carreraService.mostrarCarreras());
+		
 		return modelView;	
 	}
 	/**
