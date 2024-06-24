@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+	<style>
+	        /* Estilo para las imágenes del encabezado */
+	        .logo-facultad,
+	        .logo-facultad-2 {
+	            width: 100%; /* Por defecto, las imágenes ocupan todo el ancho */
+	            max-width: 200px; /* Máximo ancho para evitar que se vean demasiado grandes */
+	            height: auto; /* Altura automática para mantener la proporción de la imagen */
+	        }
+
+	        @media (min-width: 576px) {
+	            .logo-facultad,
+	            .logo-facultad-2 {
+	                max-width: 50px; /* Ajustar el ancho para pantallas pequeñas */
+	            }
+	        }
+
+	        @media (min-width: 768px) {
+	            .logo-facultad {
+	                max-width: 50px; /* Ajustar el ancho para pantallas medianas */
+	            }
+
+	            .logo-facultad-2 {
+	                max-width: 50px; /* Ajustar el ancho para pantallas medianas */
+	            }
+	        }
+	    </style>
+
+</head>
+<body>
+	<header class="bg-light text-dark py-3" data-th-fragment="encabezado">
+	    <div class="container header-container d-flex justify-content-between align-items-center">
+	        <img src="/img/logo-facultad.png" alt="Logo Facultad" class="img-fluid" style="max-width: 200px;">
+	        <img src="/img/logo-facultad-2.png" alt="Logo Centro" class="img-fluid mx-auto" style="max-width: 200px;">
+	        <form class="d-flex col col-sm-auto" role="search">
+	            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+	            <button class="btn btn-outline-primary" type="submit">Buscar</button>
+	        </form>
+	    </div>
+	</header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" data-th-fragment="navbar">  
+	        <div class="container">
+	            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	                <span class="navbar-toggler-icon"></span>
+	            </button>
+	            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+	                <div class="navbar-nav">
+	                    <a class="nav-link active" aria-current="page" href="/principal/home">Inicio</a>
+	                    <a class="nav-link" href="#">Acerca de</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						    	Carreras
+						    </a>
+						    <ul class="dropdown-menu">
+							    <li><a class="dropdown-item" href="/formularioCarreras">Formulario</a></li>
+							    <li><hr class="dropdown-divider"></li>
+							    <li><a class="dropdown-item" href="/carreras">Listado</a></li>
+						    </ul>
+						</li>
+						
+						<li class="nav-item dropdown">
+							<a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Docentes</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/formularioDocentes">Formulario</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="/docentes">Listado</a></li>
+							</ul>
+						</li>
+						
+						<li class="nav-item dropdown">
+							<a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Alumnos</a>
+						    <ul class="dropdown-menu">
+							    <li><a class="dropdown-item" href="/formularioAlumnos">Formulario</a></li>
+							    <li><hr class="dropdown-divider"></li>
+							    <li><a class="dropdown-item" href="/alumnos">Listado</a></li>
+						    </ul>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Materias</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/formularioMaterias">Formulario</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="/materias">Listado</a></li>
+							</ul>
+						</li>
+						<a class="nav-link" href="#">Noticias</a>
+						<a class="nav-link" href="#">Contacto</a>
+	                </div>
+	            </div>
+	        </div>
+	    </nav>  
+  
+</body>
+</html>

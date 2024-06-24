@@ -1,17 +1,14 @@
-package ar.edu.unju.fi.model;
+package ar.edu.unju.fi.DTO;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import ar.edu.unju.fi.model.Modalidad;
 import lombok.Data;
 
 @Data
 @Component
-@Entity
-public class Materia {
-	@Id
-	private String codigo;
+public class MateriaDTO {    
+    private String codigo;
 	private String nombre;
 	private String curso;
 	private Boolean estado;
