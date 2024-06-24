@@ -8,9 +8,9 @@ import ar.edu.unju.fi.DTO.MateriaDTO;
 import ar.edu.unju.fi.model.Materia;
 @Service
 public interface MateriaService {
-	public void guardarMateria(Materia materia);
 	public List<Materia> mostrarMaterias();
 	public void borrarMateria(String codigo);
-	public void modificarMateria(String codigo);
+	public void modificarMateria(MateriaDTO materiaModificada);
 	MateriaDTO buscarMateria(String codigo);
+	void guardarMateria(MateriaDTO materiaDTO);
 }

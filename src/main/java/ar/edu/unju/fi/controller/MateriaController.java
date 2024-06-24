@@ -26,22 +26,23 @@ public class MateriaController {
         modelView.addObject("band", false);
         return modelView;
     }
-
-    @PostMapping("/guardarMateria")
-    public ModelAndView saveMateria(@ModelAttribute("nuevaMateria") Materia materiaAGuardar) {
-
-    	materiaService.guardarMateria(materiaAGuardar);
+    @GetMapping("/listadoMateria")
+    public ModelAndView getListadoMateria() {
         ModelAndView modelView = new ModelAndView("listaDeMaterias");
-        //modelView.addObject("listadoMateria", ListadoMaterias.listarMaterias());
         modelView.addObject("listadoMateria", materiaService.mostrarMaterias());
         return modelView;
     }
 
+    @PostMapping("/guardarMateria")
+    public ModelAndView saveMateria(@ModelAttribute("nuevaMateria") MateriaDTO materiaParaGuardar) {
+        materiaService.guardarMateria(materiaParaGuardar);
+        return new ModelAndView("redirect:/listadoMateria");
+    }
 	  @GetMapping("/borrarMateria/{codigo}")
 	  public ModelAndView deleteMateriaDelListado(@PathVariable(name="codigo") String codigo) {
 			materiaService.borrarMateria(codigo);
 			ModelAndView modelView = new ModelAndView("listaDeMaterias");
-			modelView.addObject("listadoCarreras", materiaService.mostrarMaterias());	
+			modelView.addObject("listadoMateria", materiaService.mostrarMaterias());	
 			
 			return modelView;		
 			}
@@ -52,6 +53,12 @@ public class MateriaController {
 	  ModelAndView modelView = new ModelAndView("formMateria");
 	  modelView.addObject("nuevaMateria", materiaParaModificar);
 	  modelView.addObject("band", true); return modelView; }
+	  
+	  @PostMapping("/modificarMateria")
+	    public ModelAndView updateMateria(@ModelAttribute("nuevaMateria") MateriaDTO materiaModificada) {
+	        materiaService.modificarMateria(materiaModificada);
+	        return new ModelAndView("redirect:/listadoMateria");
+	    }
 			 
 		/*
 		 * @GetMapping("/modificarMateria/{codigo}") public ModelAndView
