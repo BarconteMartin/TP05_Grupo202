@@ -1,14 +1,11 @@
-package ar.edu.unju.fi.model;
+package ar.edu.unju.fi.DTO;
 
 import org.springframework.stereotype.Component;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity
-public class Alumno {
-    @Id
+@Component
+public class AlumnoDTO {
     private String dni;
     private String nombre;
     private String apellido;
