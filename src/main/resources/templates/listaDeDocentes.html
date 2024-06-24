@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <title>Listado Docentes</title>
+    <style>
+        .table-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="fragments/header :: encabezado"></div>
+    <div th:replace="fragments/header :: navbar"></div>
+    <div class="table-container">
+        <h1 class="text-center text-primary mb-4">Listado Docentes</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Legajo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="docente : ${listadoDocentes}">
+                    <td th:text="${docente.legajo}"></td>
+                    <td th:text="${docente.nombre}"></td>
+                    <td th:text="${docente.apellido}"></td>
+                    <td th:text="${docente.email}"></td>
+                    <td th:text="${docente.telefono}"></td>
+                    <td th:text="${docente.estado}"></td>
+                    <td>
+                        <a th:href="@{'/modificarDocente/' + ${docente.legajo}}" class="btn btn-warning">Modificar</a>
+                        <a th:href="@{'/borrarDocente/' + ${docente.legajo}}" class="btn btn-danger">Borrar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center mt-4">
+            <a th:href="@{/formularioDocentes}" class="btn btn-custom">Volver al Formulario</a>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

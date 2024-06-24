@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <title>Formulario Docentes</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-title {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 2px solid #007bff;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="~{fragments/header :: encabezado}"></div>
+    <header th:replace="~{fragments/header :: navbar}"></header>
+    <div class="form-container">
+        <h1 class="form-title">Formulario - Docente</h1>
+        <form th:object="${nuevoDocente}" th:action="@{${flag}? '/modificarDocente' : '/guardarDocente'}" method="post">
+            <div class="mb-3">
+                <label for="legajo" class="form-label">Legajo</label>
+                <input type="text" class="form-control" id="legajo" th:field="*{legajo}" th:readonly="${flag}" required>
+            </div>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" th:field="*{email}" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input type="text" class="form-control" id="telefono" th:field="*{telefono}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="estado">Estado</label>
+                <select id="estado" class="form-select" th:field="*{estado}">
+                    <option th:value="true">Activo</option>
+                    <option th:value="false">Inactivo</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Guardar Docente</button>
+        </form>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
