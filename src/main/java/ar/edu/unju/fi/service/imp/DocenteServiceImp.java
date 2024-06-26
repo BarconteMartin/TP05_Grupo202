@@ -29,7 +29,7 @@ public class DocenteServiceImp implements DocenteService {
 
     @Override
     public List<Docente> mostrarDocentes() {
-        return docenteRepository.findDocenteByEstado(true);
+       return docenteRepository.findDocenteByEstado(true);
     }
 
     @Override
@@ -49,6 +49,7 @@ public class DocenteServiceImp implements DocenteService {
             docente.setApellido(docenteModificado.getApellido());
             docente.setEmail(docenteModificado.getEmail());
             docente.setTelefono(docenteModificado.getTelefono());
+            docente.setEstado(docenteModificado.isEstado());
             docenteRepository.save(docente);
         }
     }

@@ -12,6 +12,7 @@ import ar.edu.unju.fi.model.Docente;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface DocenteMapDTO {
 
+	
     DocenteDTO convertirDocenteADocenteDTO(Docente d);
 
     @InheritInverseConfiguration
