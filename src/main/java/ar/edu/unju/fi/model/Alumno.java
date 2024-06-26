@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+@Component
 @Data
 @Entity
 public class Alumno {
@@ -18,4 +19,8 @@ public class Alumno {
     private String domicilio;
     private String lu;
     private boolean estado;
+    public boolean getEstado() {
+		return this.estado;
+	}
+	
 }
