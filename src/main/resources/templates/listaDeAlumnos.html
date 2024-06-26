@@ -1,67 +1,68 @@
 <!DOCTYPE html>
-<html lang="es">
-	<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
-	<title>Listado Alumnos</title>
-	<style>
-	    .table-container {
-	        max-width: 900px;
-	        margin: 30px auto;
-	        padding: 20px;
-	        background: #ffffff;
-	        border-radius: 10px;
-	        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	    }
-		.btn-custom {
-		        background-color: #007bff;
-		        color: white;
-		    }
-	</style>
-	</head>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <title>Listado Alumnos</title>
+    <style>
+        .table-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
 <body>
-    <header>
-        <div data-th-replace="~{fragments/header::encabezado}"></div>
-        <div data-th-replace="~{fragments/header::navbar}"></div>
-    </header>
+    <div th:replace="~{fragments/header :: encabezado}"></div>
+    <div th:replace="~{fragments/header :: navbar}"></div>
     <div class="table-container">
         <h1 class="text-center text-primary mb-4">Listado Alumnos</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">DNI</th>
-                    <th scope="col">Apellido</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Telefono</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Teléfono</th>
                     <th scope="col">Fecha de Nacimiento</th>
                     <th scope="col">Domicilio</th>
-                    <th scope="col">LU</th>
+                    <th scope="col">Libreta Universitaria</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr data-th-each="alumno : ${listadoAlumno}">
-                    <td data-th-text="${alumno.dni}"></td>
-                    <td data-th-text="${alumno.apellido}"></td>
-                    <td data-th-text="${alumno.nombre}"></td>
-                    <td data-th-text="${alumno.email}"></td>
-                    <td data-th-text="${alumno.telefono}"></td>
-                    <td data-th-text="${alumno.fechaNacimiento}"></td>
-                    <td data-th-text="${alumno.domicilio}"></td>
-                    <td data-th-text="${alumno.libretaUniversitaria}"></td>
+                <tr th:each="alumno : ${listaDeAlumnos}">
+                    <td th:text="${alumno.dni}"></td>
+                    <td th:text="${alumno.nombre}"></td>
+                    <td th:text="${alumno.apellido}"></td>
+                    <td th:text="${alumno.email}"></td>
+                    <td th:text="${alumno.telefono}"></td>
+                    <td th:text="${alumno.fechaNacimiento}"></td>
+                    <td th:text="${alumno.domicilio}"></td>
+                    <td th:text="${alumno.lu}"></td>
+                    <td th:text="${alumno.estado}"></td>
                     <td>
-                        <a data-th-href="@{'/modificarAlumno/'+${alumno.dni}}" class="btn btn-warning">Modificar</a>
-                        <a data-th-href="@{'/borrarAlumno/'+${alumno.dni}}" class="btn btn-danger">Borrar</a>
+                        <a th:href="@{'/modificarAlumno/' + ${alumno.dni}}" class="btn btn-warning">Modificar</a>
+                        <a th:href="@{'/borrarAlumno/' + ${alumno.dni}}" class="btn btn-danger">Borrar</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-		<div class="text-center mt-4">
-		    <a data-th-href="@{/formularioAlumnos}" class="btn btn-custom">Volver al Formulario</a>
-		</div>
+        <div class="text-center mt-4">
+            <a th:href="@{/formularioAlumnos}" class="btn btn-custom">Volver al Formulario</a>
+        </div>
     </div>
-	<div data-th-replace="~{fragments/footer::footer}"></div>
-	<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
