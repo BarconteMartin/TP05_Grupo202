@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        /* Estilo para las imágenes del encabezado */
+        .logo-facultad,
+        .logo-facultad-2 {
+            width: 100%; /* Por defecto, las imágenes ocupan todo el ancho */
+            max-width: 200px; /* Máximo ancho para evitar que se vean demasiado grandes */
+            height: auto; /* Altura automática para mantener la proporción de la imagen */
+        }
+
+        @media (min-width: 576px) {
+            .logo-facultad,
+            .logo-facultad-2 {
+                max-width: 50px; /* Ajustar el ancho para pantallas pequeñas */
+            }
+        }
+
+        @media (min-width: 768px) {
+            .logo-facultad {
+                max-width: 50px; /* Ajustar el ancho para pantallas medianas */
+            }
+
+            .logo-facultad-2 {
+                max-width: 50px; /* Ajustar el ancho para pantallas medianas */
+            }
+        }
+
+        /* Estilos personalizados para los colores */
+        .navbar,
+        .dropdown-menu {
+            background-color: white; /* Fondo blanco */
+            color: black; /* Texto negro */
+        }
+
+        .nav-link,
+        .dropdown-item {
+            color: black !important; /* Texto negro */
+        }
+
+        .nav-link:hover,
+        .dropdown-item:hover {
+            background-color: #f8f9fa; /* Fondo ligeramente gris al pasar el cursor */
+            color: black; /* Texto negro */
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-light text-dark py-3" data-th-fragment="encabezado">
+        <div class="container header-container d-flex justify-content-between align-items-center">
+            <img src="/img/logo-facultad.png" alt="Logo Facultad" class="img-fluid" style="max-width: 200px;">
+            <img src="/img/logo-facultad-2.png" alt="Logo Centro" class="img-fluid mx-auto" style="max-width: 200px;">
+            <form class="d-flex col col-sm-auto" role="search">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            </form>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light text-dark" data-th-fragment="navbar">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="/principal/home">Inicio</a>
+                    <a class="nav-link" href="#">Acerca de</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Carreras
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/formularioCarrera">Formulario</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/mostrarCarreras">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Docentes</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/formularioDocente">Formulario</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/mostrarDocentes">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Alumnos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/formularioAlumno">Formulario</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/mostrarAlumnos">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Materias</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/formularioMateria">Formulario</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/mostrarMateria">Listado</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Consulta</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/formularioInscripcion">Inscripción de alumno en materia</a></li>
+                            <li><a class="dropdown-item" href="/consultarAlumnos">Consultar alumnos por carrera</a></li>
+                            <li><a class="dropdown-item" href="/filtrarAlumnos">Filtrar alumnos por materia</a></li>
+                        </ul>
+                    </li>
+                    <a class="nav-link" href="#">Noticias</a>
+                    <a class="nav-link" href="#">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
