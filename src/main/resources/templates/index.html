@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Facultad de Ingenieria - FI Jujuy</title>
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+
+	        .carousel-caption {
+	            background: rgba(0, 0, 0, 0.5);
+	            color: white;
+	            text-align: center;
+	            position: absolute;
+	            top: 0;
+	            bottom: 0;
+	            left: 0;
+	            right: 0;
+	            display: flex;
+	            flex-direction: column;
+	            justify-content: center;
+	            align-items: center;
+	            padding: 20px;
+	            z-index: 2;
+	        }
+			.carousel-caption h3 {
+			    font-size: 2rem;
+			    line-height: 1.2;
+			    margin-bottom: 1rem;
+			}
+			.carousel-caption p {
+				font-size: 1.2rem;
+			}
+
+	        .card-container {
+	            position: relative;
+	            bottom: 70px;
+	            left: 50%;
+	            transform: translateX(-50%);
+	            display: flex;
+	            justify-content: center;
+	            width: 100%;
+	            z-index: 3;
+				gap: 1rem;
+				flex-wrap: wrap;
+	        }
+
+	        .card {
+	            margin: 10px;
+	            flex: 1 1 300px;
+	            max-width: calc(33.33% - 1rem);
+	            background: rgb(13, 110, 253);
+				color: white;
+	        }
+
+	        .main-content {
+	            display: flex;
+	            justify-content: space-between;
+	            margin-top: -40px;
+	        }
+
+	        .main-content .col-lg-9 {
+	            order: 1;
+	            background-color: #f8f9fa;
+	            padding: 20px;
+	        }
+
+	        .main-content aside {
+	            order: 2;
+	            background-color: #e9ecef;
+	            padding: 20px;
+	        }
+
+	        .section-title {
+	            margin-top: 20px;
+	            margin-bottom: 10px;
+	        }
+
+	        .main-content .col-lg-9 > div {
+	            margin-bottom: 20px;
+	        }
+			.mi-container {
+			    width: 100%;
+			    padding-right: 0;
+			    padding-left: 0;
+			    margin-right: auto;
+			    margin-left: auto;
+			}
+	    </style>
+</head>
+<body>
+    <div class="mi-container">
+        <header>
+			<div data-th-replace="~{fragments/header::encabezado}"></div>
+			<div data-th-replace="~{fragments/header::navbar}"></div>
+        </header>
+		<!-- Carousel y tarjetas -->
+		    <div class="carousel-container position-relative">
+				<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+				    <div class="carousel-inner">
+				        <div class="carousel-item active">
+				            <img src="/img/image1.jpg" class="d-block w-100 img-fluid" alt="Imagen 1">
+				            <div class="carousel-caption text-center">
+				                <h3 class="fs-2">Aprender cosas nuevas.</h3>
+				                <h3 class="fs-2"><span class="text-primary">Consigue nuevas habilidades.</span></h3>
+				                <p class="fs-5">Únete a nosotros</p>
+				                <a href="#" class="btn btn-primary">Buscar carreras</a>
+				            </div>
+				        </div>
+				        <div class="carousel-item">
+				            <img src="/img/image2.jpg" class="d-block w-100 img-fluid" alt="Imagen 2">
+				            <div class="carousel-caption text-center">
+				                <h3 class="fs-2">Descubre nuevas oportunidades.</h3>
+				                <h3 class="fs-2"><span class="text-primary">Expande tu horizonte.</span></h3>
+				                <p class="fs-5">Encuentra tu camino.</p>
+				                <a href="#" class="btn btn-primary">Explorar programas</a>
+				            </div>
+				        </div>
+				        <div class="carousel-item">
+				            <img src="/img/image3.jpg" class="d-block w-100 img-fluid" alt="Imagen 3">
+				            <div class="carousel-caption text-center">
+				                <h3 class="fs-2">Transforma tu futuro.</h3>
+				                <h3 class="fs-2"><span class="text-primary">Haz realidad tus sueños.</span></h3>
+				                <p class="fs-5">Empieza tu viaje hoy mismo.</p>
+				                <a href="#" class="btn btn-primary">Ver más</a>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+		        <div class="card-container d-flex justify-content-center">
+		            <div class="card">
+		                <div class="card-body">
+		                    <h5 class="card-title">Programas de Estudio</h5>
+		                    <h6 class="card-subtitle mb-2 text-muted">Explora Nuestros Cursos</h6>
+		                    <p class="card-text">Ofrecemos una amplia gama de programas académicos.</p>
+		                </div>
+		            </div>
+		            <div class="card">
+		                <div class="card-body">
+		                    <h5 class="card-title">Sobre Nosotros</h5>
+		                    <h6 class="card-subtitle mb-2 text-muted">Conócenos</h6>
+		                    <p class="card-text">Aprende más sobre nuestra historia, misión y valores.</p>
+		                </div>
+		            </div>
+		            <div class="card">
+		                <div class="card-body">
+		                    <h5 class="card-title">Noticias y Eventos</h5>
+		                    <h6 class="card-subtitle mb-2 text-muted">Últimas Noticias</h6>
+		                    <p class="card-text">Entérate de los últimos acontecimientos y eventos.</p>
+		                </div>
+		            </div>
+		            <div class="card">
+		                <div class="card-body">
+		                    <h5 class="card-title">Contacto</h5>
+		                    <h6 class="card-subtitle mb-2 text-muted">Contáctanos</h6>
+		                    <p class="card-text">¿Tienes preguntas? Nuestro equipo está listo para asistirte.</p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div class="container main-content">
+		        <!-- Barra Lateral con Menú de Navegación -->
+		        <aside class="col-lg-3">
+		            <div class="p-4 mb-3 bg-light rounded">
+		                <h4 class="fst-italic">Enlaces Rápidos</h4>
+		                <nav class="nav flex-column">
+		                    <a class="nav-link active" aria-current="page" href="#">Biblioteca</a>
+		                    <a class="nav-link" href="#">Calendario Académico</a>            
+							<a class="nav-link" href="#">Departamentos</a>
+		                    <a class="nav-link" href="#">Estudiantes Internacionales</a>
+		                </nav>
+		            </div>
+		        </aside>
+
+		        <!-- Sección de Contenido Principal -->
+		        <div class="col-lg-9">
+		            <div class="mb-4 rounded-3 bg-light p-4 shadow-sm">
+		                <h3>Bienvenidos a la Facultad de Ingeniería de Jujuy</h3>
+		                <p class="mb-0">La Facultad de Ingeniería de Jujuy es un centro de excelencia académica que ofrece programas de grado y posgrado en diversas ramas de la ingeniería. Nuestro compromiso es formar profesionales capacitados para enfrentar los retos del futuro, fomentando la innovación y el desarrollo sostenible.</p>
+		            </div>
+
+		            <!-- Acordeón para la estructura de las secciones -->
+		            <div class="accordion" id="accordionExample">
+						<div class="accordion-item">
+						    <h2 class="accordion-header" id="headingOne">
+						        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						            Introducción y Bienvenida
+						        </button>
+						    </h2>
+						    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+						        <div class="accordion-body">
+						            <p>La Facultad de Ingeniería de Jujuy se destaca por su compromiso con la excelencia académica y la innovación. Ofrecemos una amplia gama de programas de grado y posgrado diseñados para preparar a los estudiantes para liderar y innovar en diversas áreas de la ingeniería. Nuestro campus, equipado con tecnología de punta, proporciona un entorno ideal para el aprendizaje práctico y la investigación.</p>
+						            <div class="alert alert-info" role="alert">
+						                <strong>Mensaje del Decano:</strong> Bienvenidos a la Facultad de Ingeniería de Jujuy. Como decano, me enorgullece liderar una institución donde la pasión por el conocimiento y la innovación guían nuestro quehacer diario. Aquí, no solo te preparamos para enfrentar los desafíos profesionales del mañana, sino que también te impulsamos a ser un agente de cambio para un futuro mejor y más sostenible. Te invitamos a explorar nuestras ofertas académicas y a unirte a nuestra comunidad de líderes y creativos.
+						            </div>
+						            <figure class="text-center">
+						                <img src="/img/fachada.jpg" alt="Fachada de la Facultad" class="img-fluid">
+						                <figcaption><i>Fachada de la Facultad de Ingeniería de Jujuy: Un símbolo de nuestro compromiso con la innovación y la excelencia.</i></figcaption>
+						            </figure>
+						        </div>
+						    </div>
+						</div>
+						<div class="accordion-item">
+						    <h2 class="accordion-header" id="headingTwo">
+						        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						            Oferta Académica
+						        </button>
+						    </h2>
+						    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+						        <div class="accordion-body">
+						            <div class="row">
+						                <div class="col-4">
+						                    <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+						                        <nav class="nav nav-pills flex-column">
+						                            <a class="nav-link" href="#programas-grado">Programas de Grado</a>
+						                            <a class="nav-link" href="#programas-posgrado">Programas de Posgrado</a>
+						                            <a class="nav-link" href="#cursos-diplomaturas">Cursos y Diplomaturas</a>
+						                        </nav>
+						                    </nav>
+						                </div>
+
+						                <div class="col-8">
+						                    <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-example-2" tabindex="0">
+						                        <div id="programas-grado">
+						                            <h4>Programas de Grado</h4>
+						                            <ul>
+						                                <li>Ingeniería Química</li>
+						                                <li>Ingeniería de Minas</li>
+						                                <li>Ingeniería Industrial</li>
+						                                <li>Ingeniería Informática</li>
+						                                <li>Licenciatura en Sistemas</li>
+						                                <li>Licenciatura en Tecnología de los Alimentos</li>
+						                                <li>Licenciatura en Ciencias Geológicas</li>
+						                                <li>Tecnicatura Universitaria en Ciencias Geológicas</li>
+						                            </ul>
+						                        </div>
+						                        <div id="programas-posgrado">
+						                            <h4>Programas de Posgrado</h4>
+						                            <ul>
+						                                <li>Maestrías</li>
+						                                <li>Doctorados</li>
+						                                <li>Especializaciones</li>
+						                            </ul>
+						                        </div>
+						                        <div id="cursos-diplomaturas">
+						                            <h4>Cursos y Diplomaturas</h4>
+						                            <ul>
+						                                <li>Analista Programador Universitario</li>
+						                                <li>Tecnicatura Universitaria en Explotación de Minas</li>
+						                                <li>Tecnicatura Universitaria en Procesamiento de Minerales</li>
+						                                <li>Tecnicatura Universitaria en Perforaciones</li>
+						                                <li>Tecnicatura Universitaria en Cs. de la Tierra Orientada a Petróleo</li>
+						                                <li>Tecnicatura Universitaria en Diseño Integral de Videojuegos</li>
+						                            </ul>
+						                        </div>
+						                    </div>
+						                </div>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+						<div class="accordion-item">
+						    <h2 class="accordion-header" id="headingThree">
+						        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						            Información para Estudiantes
+						        </button>
+						    </h2>
+						    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+						        <div class="accordion-body">
+						            <h4>Proceso de Admisión</h4>
+						            <p>Requisitos, fechas importantes y procedimientos para la inscripción.</p>
+						            <h4>Calendario Académico</h4>
+						            <p>Fechas clave, períodos de inscripción, exámenes y vacaciones.</p>
+						            <h4>Becas y Ayudas Financieras</h4>
+						            <p>Información sobre oportunidades de financiamiento y becas disponibles.</p>
+						            <h4>Servicios Estudiantiles</h4>
+						            <p>Ofrecemos una variedad de servicios para nuestros estudiantes, incluyendo biblioteca, comedor, transporte, alojamiento y asistencia médica.</p>
+						        </div>
+						    </div>
+						</div>
+		                <div class="accordion-item">
+		                    <h2 class="accordion-header" id="headingFour">
+		                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+		                            Investigación y Desarrollo
+		                        </button>
+		                    </h2>
+		                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+		                        <div class="accordion-body">
+		                            <h4>Proyectos de Investigación</h4>
+		                            <p>Descripción de los proyectos actuales y pasados.</p>
+		                            <h4>Publicaciones</h4>
+		                            <p>Listado de publicaciones científicas y técnicas.</p>
+		                            <h4>Grupos y Centros de Investigación</h4>
+		                            <p>Información sobre los grupos y centros de investigación dentro de la facultad.</p>
+		                            <h4>Oportunidades de Colaboración</h4>
+		                            <p>Información sobre cómo las empresas y otras instituciones pueden colaborar con la facultad.</p>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="accordion-item">
+		                    <h2 class="accordion-header" id="headingFive">
+		                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+		                            Vida Estudiantil
+		                        </button>
+		                    </h2>
+		                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+		                        <div class="accordion-body">
+		                            <h4>Actividades y Eventos</h4>
+		                            <p>Información sobre eventos académicos, culturales y deportivos.</p>
+		                            <h4>Organizaciones Estudiantiles</h4>
+		                            <p>Información sobre asociaciones y clubes estudiantiles.</p>
+		                            <h4>Testimonios de Estudiantes y Egresados</h4>
+		                            <p>Experiencias y opiniones de estudiantes actuales y graduados.</p>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="accordion-item">
+		                    <h2 class="accordion-header" id="headingSix">
+		                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+		                            Personal Académico y Administrativo
+		                        </button>
+		                    </h2>
+		                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+		                        <div class="accordion-body">
+		                            <h4>Directorio del Personal</h4>
+		                            <p>Listado del personal docente y administrativo con sus respectivos contactos y áreas de especialización.</p>
+		                            <h4>Mensajes del Decano y Directores de Carrera</h4>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="accordion-item">
+		                    <h2 class="accordion-header" id="headingSeven">
+		                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+		                            Infraestructura y Recursos
+		                        </button>
+		                    </h2>
+		                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+		                        <div class="accordion-body">
+		                            <h4>Instalaciones</h4>
+		                            <p>Información sobre laboratorios, talleres, bibliotecas y otras instalaciones disponibles.</p>
+		                            <h4>Tecnologías y Recursos</h4>
+		                            <p>Descripción de los recursos tecnológicos y materiales de apoyo disponibles para los estudiantes.</p>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="accordion-item">
+		                    <h2 class="accordion-header" id="headingEight">
+		                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+		                            Vinculación con el Medio
+		                        </button>
+		                    </h2>
+		                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+		                        <div class="accordion-body">
+		                            <h4>Convenios y Alianzas</h4>
+		                            <p>Información sobre acuerdos con otras universidades, empresas y organizaciones.</p>
+		                            <h4>Programas de Extensión</h4>
+		                            <p>Proyectos y actividades de extensión universitaria.</p>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="accordion-item">
+		                    <h2 class="accordion-header" id="headingNine">
+		                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+		                            Noticias y Actualidades
+		                        </button>
+		                    </h2>
+		                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
+		                        <div class="accordion-body">
+		                            <h4>Noticias Recientes</h4>
+		                            <p>Actualizaciones sobre logros, eventos y novedades de la facultad.</p>
+		                            <h4>Boletines y Comunicados</h4>
+		                            <p>Publicaciones periódicas y comunicados importantes.</p>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="accordion-item">
+		                    <h2 class="accordion-header" id="headingTen">
+		                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+		                            Contacto y Localización
+		                        </button>
+		                    </h2>
+		                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordionExample">
+		                        <div class="accordion-body">
+		                            <h4>Información de Contacto</h4>
+		                            <p>Teléfonos, correos electrónicos y formularios de contacto.</p>
+		                            <h4>Dirección y Mapa</h4>
+		                            <p>Ubicación de la facultad con un mapa interactivo y opciones de transporte.</p>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="accordion-item">
+		                    <h2 class="accordion-header" id="headingEleven">
+		                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+		                            Recursos Adicionales
+		                        </button>
+		                    </h2>
+		                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven" data-bs-parent="#accordionExample">
+		                        <div class="accordion-body">
+		                            <h4>FAQs</h4>
+		                            <p>Preguntas frecuentes y sus respuestas.</p>
+		                            <h4>Acceso a Plataformas Virtuales</h4>
+		                            <p>Enlaces a plataformas de educación virtual, como Moodle u otras.</p>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+
+		    <!-- Pie de página -->
+		    <footer class="bg-light text-dark py-4 mt-5">
+		        <div data-th-replace="~{fragments/footer::footer}"></div>
+		    </footer>
+    </div>
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

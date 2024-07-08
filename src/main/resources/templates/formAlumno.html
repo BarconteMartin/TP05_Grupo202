@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Alumno</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-title {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 2px solid #007bff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+        .form-control {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+		<header>
+		     <div data-th-replace="~{fragments/header::encabezado}"></div>
+		     <div data-th-replace="~{fragments/header::navbar}"></div>
+		 </header>
+        <div class="form-container">
+            <h1 class="form-title">Formulario Alumno</h1>
+            <form data-th-object="${nuevoAlumno}" data-th-action="${band}?@{/modificarAlumno}:@{guardarAlumno}" method="post">
+                <div class="form-group">
+                    <label for="lu" class="form-label">Libreta Universitaria</label>
+                    <input type="text" class="form-control" id="lu" data-th-field="*{lu}" data-th-readonly="${band}">
+                    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('lu')}" data-th-errors="*{lu}"></p>
+                </div>
+                <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estado}">
+                <div class="form-group">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" data-th-field="*{nombre}">
+                    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="apellido" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" data-th-field="*{apellido}">
+                    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('apellido')}" data-th-errors="*{apellido}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="text" class="form-control" id="dni" data-th-field="*{dni}">
+                    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('dni')}" data-th-errors="*{dni}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="fnac" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fnac" data-th-field="*{fnacimiento}">
+                    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('fnacimiento')}" data-th-errors="*{fnacimiento}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="domicilio" class="form-label">Domicilio</label>
+                    <input type="text" class="form-control" id="domicilio" data-th-field="*{domicilio}">
+                    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('domicilio')}" data-th-errors="*{domicilio}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" data-th-field="*{email}">
+                    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="tel" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" id="tel" data-th-field="*{telefono}">
+                    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('telefono')}" data-th-errors="*{telefono}"></p>
+                </div>
+				<div class="form-group">
+					<label for="carrera" class="form-label">Carrera</label>
+					<select id="carrera" data-th-field="*{carrera.codigo}" class="form-control" required>
+						<option value="">Seleccionar Carrera</option>
+						<option data-th-value="${c.codigo}" data-th-each="c:${listadoCarreras}" data-th-text="${c.nombre}"></option>
+					</select>
+				</div>
+                <button type="submit" class="btn btn-outline-success btn-submit">Guardar Alumno</button>
+            </form>
+        </div>
+        <footer data-th-replace="~{fragments/footer::footer}"></footer>
+    <script data-th-href="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>
