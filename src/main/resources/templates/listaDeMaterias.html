@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Materias</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .main-container {
+            margin: 20px;
+        }
+        .table-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px white;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn {
+            margin-right: 10px;
+        }
+        
+    </style>            
+</head>
+<body>
+    <header>
+	    <div data-th-replace="~{fragments/header::encabezado}"></div>
+	    <div data-th-replace="~{fragments/header::navbar}"></div>
+	</header>
+    <div class="main-container">
+        <h1 class="text-center">Listado de Materias</h1>
+        <div class="table-container">
+                <table class="table table-light table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Cantidad de horas</th>
+                        <th scope="col">Modalidad</th>
+                        <th scope="col">Docente</th>
+                        <th scope="col">Carrera</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="m : ${listadoMaterias}">
+                        <td data-th-text="${m.codigoMateria}"></td>
+                        <td data-th-text="${m.nombreMateria}"></td>
+                        <td data-th-text="${m.cursoMateria}"></td>
+                        <td data-th-text="${m.duracionMateria}"></td>
+                        <td data-th-text="${m.modalidadMateria}"></td>
+						<td th:text="${m.docenteMateria != null ? m.docenteMateria.nombre + ' ' + m.docenteMateria.apellido : 'No asignado'}"></td>
+							<td th:text="${m.carreraMateria != null ? m.carreraMateria.nombre : 'No asignada'}"></td>     
+                        <td>
+                            <a data-th-href="@{'/eliminarMateria/'+${m.codigoMateria}}" class="btn btn-danger">Borrar</a>            
+                            <a data-th-href="@{'/modificarMateria/'+${m.codigoMateria}}" class="btn btn-warning">Modificar</a>
+	
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center mt-4">
+                <a data-th-href="@{/formularioMateria}" class="btn btn-custom">Volver al Formulario</a>
+            </div>
+            <br>
+        </div>
+    </div>
+    <footer data-th-replace="~{fragments/footer::footer}"></footer>
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>    
+</body>
+</html>

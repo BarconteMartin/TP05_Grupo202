@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <title>Formulario Docente</title>
+     <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-label{
+            color: #007bff;}
+            
+        .form-title {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 2px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+	<header>
+	    <div data-th-replace="~{fragments/header::encabezado}"></div>
+	    <div data-th-replace="~{fragments/header::navbar}"></div>
+	</header>
+    <div class="form-container">
+        <h1 class="form-title">Formulario - Docente</h1>
+        <form data-th-object="${nuevoDocente}" data-th-action="@{${bandera}? '/modificarDocente' : '/guardarDocente'}" method="post">
+            <div class="mb-3">
+                <label for="legajo" class="form-label">Legajo</label>
+                <input type="text" class="form-control" id="legajo" data-th-field="*{legajo}" data-th-readonly="${bandera}" required>
+                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('legajo')}" data-th-errors="*{legajo}"></p>
+            </div>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" data-th-field="*{nombre}" required>
+                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido" data-th-field="*{apellido}" required>
+                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('apellido')}" data-th-errors="*{apellido}"></p>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" data-th-field="*{email}" required>
+                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}"></p>
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="number" class="form-control" id="telefono" data-th-field="*{telefono}" required>
+                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('telefono')}" data-th-errors="*{telefono}"></p>
+            </div>
+            <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estado}">
+            <button type="submit" class="btn btn-primary w-100">Guardar Docente</button>
+        </form>
+    </div>
+    <footer th:replace="~{fragments/footer::footer}"></footer>
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

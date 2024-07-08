@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Vista de Alumnos en Carreras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 60px; /* Ajuste para el navbar fijo */
+        }
+        .table {
+            margin-top: 20px;
+        }
+        .btn {
+            margin-top: 20px;
+        }
+        .btn-outline-danger {
+            color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+        .button {
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-title {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 2px solid #007bff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div data-th-replace="~{fragments/header::encabezado}"></div>
+        <div data-th-replace="~{fragments/header::navbar}"></div>
+    </header>
+
+    <div class="form-container">
+        <h1 class="form-title">Consultar Alumnos por Carrera</h1>
+        <form th:action="@{/consultarAlumnos}" method="post">
+            <div class="form-group">
+				<label for="codigoCarrera" class="form-label">Ingrese Código de Carrera:</label>
+				<input type="text" id="codigoCarrera" name="codigoCarrera" class="form-control" placeholder="Ingrese código...">
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit">Consultar</button>
+        </form>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Libreta Universitaria</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Carrera</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="alumno : ${listadoAlumnos}">
+                    <td th:text="${alumno.lu}"></td>
+                    <td th:text="${alumno.nombre}"></td>
+                    <td th:text="${alumno.apellido}"></td>
+                    <td th:text="${alumno.carrera.nombre}"></td>
+                    <td>
+                        <a href="/mostrarCarreras" class="btn btn-outline-danger">VOLVER</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a href="/principal/index" class="btn btn-outline-success">Inicio</a>
+    </div>
+
+    <footer data-th-replace="~{fragments/footer::footer}" class="footer"></footer>
+
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

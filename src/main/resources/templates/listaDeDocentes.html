@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .main-container {
+            margin: 20px;
+        }
+        .table-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px white;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn {
+            margin-right: 10px;
+        }
+    </style>
+    <title>Lista de Docentes</title>
+</head>
+<body>
+	<header>
+	    <div data-th-replace="~{fragments/header::encabezado}"></div>
+	    <div data-th-replace="~{fragments/header::navbar}"></div>
+	</header>
+    <div class="main-container">
+        <h1 class="text-center">Lista de Docentes</h1>
+        <div class="table-container">
+            <table class="table table-light table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Legajo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="docente : ${listadoDocentes}">
+                        <td data-th-text="${docente.legajo}"></td>
+                        <td data-th-text="${docente.nombre}"></td>
+                        <td data-th-text="${docente.apellido}"></td>
+                        <td data-th-text="${docente.email}"></td>
+                        <td data-th-text="${docente.telefono}"></td>
+                        <td>
+                            <a data-th-href="@{'/eliminarDocente/'+${docente.legajo}}" class="btn btn-danger">Eliminar</a>
+                            <a data-th-href="@{'/modificarDocente/'+${docente.legajo}}" class="btn btn-warning">Modificar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-center mt-4">
+                <a data-th-href="@{/formularioDocente}" class="btn btn-custom">Volver al Formulario</a>
+            </div>
+            <br>
+        </div>
+    </div>
+    <footer data-th-replace="fragments/footer :: footer"></footer>
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
